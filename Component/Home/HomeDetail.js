@@ -16,7 +16,7 @@ var HomeDetail = React.createClass({
 	render() {
 		return (
 				<View style={styles.container}>
-					<TouchableOpacity onPress={() => {this.popToHome}}>
+					<TouchableOpacity onPress={() => {this.popToHome()}}>
 						<Text style={styles.welcome}>
 							HomeDetail
 						</Text>
