@@ -5,7 +5,8 @@ import {
   Text,
   View,
   Image,
-  Platform
+  Platform,
+  Navigator
 } from 'react-native';
 
 // 引入外部组件
@@ -35,7 +36,17 @@ var Main = React.createClass({
                 selected={this.state.selectedTab === 'home'}
                 onPress={() => this.setState({ selectedTab: 'home' })}
             >
-                <Home />
+                <Navigator
+                    initialRoute={{name: '首页', component:Home}}
+                        // 跳转动画
+                        configureScene={()=> {
+                            return Navigator.SceneConfigs.PushFromRight;
+                        }}
+                        renderScene={(route, navigator) =>{
+                            let Component = route.component;
+                            return <Component {...route.passProps} navigator={navigator} />
+                        }}
+                />
             </TabNavigator.Item>
             {/*--商家--*/}
             <TabNavigator.Item
